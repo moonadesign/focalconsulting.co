@@ -277,31 +277,85 @@ small {
    - .badges
    - .badge
 */
-#projects .wrap {
+#projects {
+  padding: 4rem 0;
+}
+
+#projects .content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#projects .content .wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .product-card {
-  flex: 1 1 450px;
-  min-height: 300px;
+  min-height: 19rem;
   padding: 2rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: var(--color-text);
   background-position: center;
   background-size: cover;
+  color: var(--color-white);
 }
 
-.product-card:last-child {
-  flex-basis: 100%;
+.product-card h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: color(display-p3 1 1 1 / 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  white-space: nowrap;
+}
+
+/* Card width assignments */
+.product-card:nth-child(1) {
+  grid-column: span 2;
+} /* First card - wide */
+.product-card:nth-child(2) {
+  grid-column: span 1;
+} /* Second card - narrow */
+.product-card:nth-child(3) {
+  grid-column: span 1;
+} /* Third card - narrow */
+.product-card:nth-child(4) {
+  grid-column: span 2;
+} /* Fourth card - wide */
+.product-card:nth-child(5) {
+  grid-column: span 2;
+} /* Fifth card - wide */
+.product-card:nth-child(6) {
+  grid-column: span 1;
+} /* Sixth card - narrow */
 
 @media (max-width: 768px) {
-  .product-card {
-    flex-basis: 100%;
+  #projects .content .wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card:nth-child(n) {
+    grid-column: 1; /* Reset all cards to full width on mobile */
   }
 }
 
