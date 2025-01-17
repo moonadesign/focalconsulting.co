@@ -1,11 +1,12 @@
 const g = document.getElementById.bind(document)
 const q = document.querySelectorAll.bind(document)
 
-q('.button').forEach(el =>
+q('a.button').forEach(el =>
   el.addEventListener('click', e => {
+    e.preventDefault()
     window.scrollTo({
       behavior: 'smooth',
-      top: g('calendar').getBoundingClientRect().top + window.scrollY,
+      top: g('contact').getBoundingClientRect().top + window.scrollY,
     })
 
     // track this event
