@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
 
-/* colors */
+/* ==========================================================================
+   1. IMPORTS & FONTS
+   ========================================================================== */
+/* No specific classes - global font imports only */
 
+/* ==========================================================================
+   2. CUSTOM PROPERTIES & COLOR THEMES
+   ========================================================================== */
+/* No specific classes - global CSS variables only */
 :root {
   --color-accent: #2ecfe0;
   --color-background: #fff;
@@ -23,7 +30,6 @@
     --color-accent: #e66;
     --color-background: #522;
     --color-text: #f2eed9;
-    --color-white: white;
   }
 
   @supports (color: color(display-p3 1 1 1)) {
@@ -31,29 +37,23 @@
       --color-accent: color(display-p3 0.9333 0.4 0.4);
       --color-background: color(display-p3 0.3333 0.1333 0.1333);
       --color-text: color(display-p3 0.95 0.9333 0.85);
-      --color-white: color(display-p3 1 1 1);
     }
   }
 }
 
-@media (prefers-color-scheme: light) {
-  /* blending modes only on light */
-  img,
-  #glamour-shot,
-  .calendly-inline-widget {
-    mix-blend-mode: multiply;
-  }
-}
-
+/* ==========================================================================
+   3. RESET & BASE STYLES
+   ========================================================================== */
+/* No specific classes - global element styles only */
 * {
   box-sizing: border-box;
 }
 
-/* typography */
-
 body {
+  margin: 0;
   font: 100%/1 'DM Sans', system-ui, sans-serif;
-  /* text-rendering: geometricPrecision; */
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 h1,
@@ -63,63 +63,61 @@ p {
   margin: 0;
 }
 
-h1,
-h2 {
-  font: 400 2.5rem/1 'Averia Serif Libre', Georgia, serif;
-  letter-spacing: -0.05em;
+/* ==========================================================================
+   4. TYPOGRAPHY
+   ========================================================================== */
+/* Classes used:
+   - .copy-2024 (large paragraph text)
+*/
+h1 {
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, 6rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: 2rem;
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 h3 {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.5;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 p {
   line-height: 1.5;
-  max-width: 30rem;
+  max-width: 65ch;
 }
 
 small {
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .copy-2024 {
-  font-size: 1.25rem;
-  max-width: 37rem;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 65ch;
 }
 
-/* layout */
-
-body {
-  margin: 0;
-  background: var(--color-background);
-}
-
-/* Layout fundamentals */
+/* ==========================================================================
+   5. LAYOUT FUNDAMENTALS
+   ========================================================================== */
+/* Classes used:
+   - .center (flex container for centered content)
+*/
 header,
 section,
 footer {
-  padding: 72px;
-  width: 1024px;
-  margin: 0 auto; /* Center each section */
-  box-sizing: border-box;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  header,
-  section,
-  footer {
-    width: 100%;
-    padding: 3rem;
-  }
+  width: min(1024px, 100%);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4.5rem);
 }
 
 .center {
@@ -132,525 +130,205 @@ footer {
   width: 100%;
 }
 
-/* branding */
-
-body {
-  background: var(--color-background);
-  color: var(--color-text);
-}
-
-em,
-small,
-.svg-inline--fa {
-  color: var(--color-accent);
-}
-
-svg {
-  fill: var(--color-text);
-}
-
-.svg-inline--fa {
-  font-size: 2rem;
-  margin: 3rem 0;
-}
-
-.hue {
-  background: var(--color-text);
-  mix-blend-mode: color;
-  opacity: 0.3;
-}
-
-/* hero */
-
-#glamour-shot {
-  background: url(https://res.cloudinary.com/moona/image/upload/v1725384592/JoeyHendrix/joey-sep3_arg7kj.jpg) no-repeat
-    center / cover;
-  border-radius: 50% 50% 0 0;
-  height: 20rem;
-  overflow: hidden;
-  position: relative;
-  width: 20rem;
-}
-
-/* components */
-
-.button {
-  background: var(--color-text);
-  border-radius: 1.5rem;
-  color: var(--color-background);
-  cursor: pointer;
+/* ==========================================================================
+   6. SHARED COMPONENTS
+   ========================================================================== */
+/* Shared classes used throughout multiple sections:
+   Buttons:
+   - .button (primary action button)
+   - .linkedin-button (LinkedIn connect button)
+   
+   Badges:
+   - .badges (badge container)
+   - .badge (individual badge)
+*/
+.button,
+.linkedin-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 1rem 1.5rem;
+  background: var(--color-text);
+  border-radius: 2rem;
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
 }
-.button:hover {
+
+.button:hover,
+.linkedin-button:hover {
   background: var(--color-accent);
 }
 
-img {
-  border-radius: 1rem;
-  max-width: 100%;
-}
-
-/* services */
-
-.service-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-.service-item {
-  border: 1px solid var(--color-text);
-  border-radius: 1.5rem;
-  padding: 1rem 1.5rem;
-}
-
-/* see how */
-
-.see-how {
-  padding: 3rem 1.5rem;
-}
-
-.stack {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-img {
-  border: 2px solid var(--color-text);
-  box-shadow: 8px 8px var(--color-text);
-}
-
-/* quote */
-
-.quote {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 600px;
-}
-
-.cite-person {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-/* calendar */
-
-.calendly-inline-widget {
-  height: 150vh;
-  width: 100%;
-}
-
-/* scene */
-
-.scene {
-  /* background: url(https://picsum.photos/960/540) no-repeat center / cover; */
-  border-radius: 1rem;
-  overflow: hidden;
-  padding-bottom: 177.78%; /* 9:16 aspect ratio */
-  position: relative;
-  width: 100%;
-}
-.scene em {
-  color: var(--color-white);
-}
-.hue,
-.scene-content,
-.scene-video {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.scene-content {
-  align-items: center;
-  background: #3003;
-  color: var(--color-background);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 4rem;
-  z-index: 2;
-}
-.scene-video {
-  object-fit: cover;
-  object-position: center;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* responsive */
-
-@media (max-width: 480px) {
-  /* isolate phone — 30rem */
-  .scene-video {
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
-  }
-}
-
-@media (min-width: 480px) {
-  /* phone — 30rem */
-  h1 {
-    font-size: 3.5rem;
-  }
-  h2 {
-    font-size: 2.5rem;
-  }
-
-  .scene {
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  }
-  .scene-video {
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  /* tablet — 48rem */
-
-  h1 {
-    font-size: 6rem;
-  }
-  h2 {
-    font-size: 3rem;
-  }
-
-  header,
-  section,
-  footer {
-    padding: 3rem;
-  }
-
-  .see-how .center {
-    flex-direction: row;
-    gap: 4rem;
-  }
-  .see-how .stack {
-    flex: 1;
-  }
-  .stack {
-    align-items: flex-start;
-    text-align: left;
-  }
-  .see-how:nth-child(even) .stack:first-child {
-    order: 1;
-  }
-}
-@media (min-width: 1120px) {
-  /* desktop — 70rem */
-
-  .calendly-inline-widget {
-    height: 100vh;
-  }
-}
-
-/* New section styles */
-.letter {
-  display: flex;
-  gap: 32px;
-  padding: 72px;
-}
-
-.letter img {
-  width: 240px;
-  height: 320px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.linkedin-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  width: 240px;
-  background: var(--color-text);
-  border-radius: 8px;
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 16px;
-}
-
-.reach-out .list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.reach-out hr {
-  border: none;
-  height: 1px;
-  background: color(display-p3 0.133 0.2 0.4 / 0.1);
-}
-
-.projects .wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-
-.product-card {
-  flex: 1;
-  min-width: 400px;
-  background-size: cover;
-  background-position: center;
-}
-
-/* Specific card backgrounds */
-.product-card:nth-child(1) {
-  background-image: linear-gradient(180deg, rgba(29, 52, 106, 0) 0%, rgba(29, 52, 106, 0.8) 100%),
-    url('expedition-style-duffle-bag.png');
-}
-
-.product-card:nth-child(2) {
-  background-image: linear-gradient(180deg, rgba(29, 52, 106, 0) 0%, rgba(29, 52, 106, 0.8) 100%),
-    url('high-end-photography-accessories.png');
-}
-
-.product-card:nth-child(3) {
-  background-image: linear-gradient(180deg, rgba(29, 52, 106, 0) 0%, rgba(29, 52, 106, 0.8) 100%),
-    url('power-tools.png');
-}
-
-.product-card:nth-child(4) {
-  background-image: linear-gradient(180deg, rgba(29, 52, 106, 0) 0%, rgba(29, 52, 106, 0.8) 100%),
-    url('traffic-safety-equipment.png');
-}
-
-.product-card:nth-child(5) {
-  background-image: linear-gradient(180deg, rgba(29, 52, 106, 0) 0%, rgba(29, 52, 106, 0.8) 100%), url('otw-safety.png');
-  width: 100%; /* Full width for the last card */
-}
-
-.product-card .fill {
-  flex: 1;
-}
-
-.product-card h3 {
-  font-family: 'DM Sans';
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 100%;
-  letter-spacing: -0.04em;
-  color: var(--color-white);
-  margin: 0;
-}
-
-/* Responsive adjustments */
-@media (min-width: 1024px) {
-  .product-card {
-    width: calc(50% - 12px); /* Two cards per row, accounting for gap */
-  }
-
-  .product-card:last-child {
-    width: 100%; /* Full width for the last card */
-  }
-}
-
+/* Badges */
 .badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .badge {
-  padding: 6px 10px;
+  padding: 0.375rem 0.625rem;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  font-size: 12px;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
   color: var(--color-white);
 }
 
-/* Layout fundamentals */
-header,
-section,
-footer {
-  padding: 72px;
-  width: 1024px;
-}
-
-/* Hero section */
+/* ==========================================================================
+   7. HEADER & HERO
+   ========================================================================== */
+/* Classes used:
+   - .hero (hero section container)
+   Components used:
+   - .button
+*/
 .hero {
-  height: 416px;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
+  gap: 1.5rem;
+  max-width: 880px;
 }
 
 .hero h1 {
-  width: 880px;
-  height: 96px;
-  font-family: 'DM Sans';
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 100%;
-  letter-spacing: -0.04em;
-  color: var(--color-text);
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  line-height: 1.2;
 }
 
-.hero p {
-  width: 352px;
-  height: 72px;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 0.01em;
-  color: color(display-p3 0.133 0.2 0.4 / 0.6);
-}
-
-.hero .button {
-  padding: 16px 24px;
-  gap: 8px;
-  width: 140px;
-  height: 56px;
-  background: var(--color-text);
-  border-radius: 28px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: -0.02em;
-  color: var(--color-white);
-}
-
-/* Letter section */
+/* ==========================================================================
+   8. LETTER SECTION
+   ========================================================================== */
+/* Classes used:
+   - .letter (section container)
+   - .stack (vertical stack layout)
+   Components used:
+   - .linkedin-button
+   - .copy-2024
+*/
 .letter {
-  height: 540px;
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .letter {
+    grid-template-columns: 1fr;
+  }
 }
 
 .letter .stack {
-  width: 240px;
-  height: 396px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 2rem;
 }
 
 .letter img {
-  width: 240px;
-  height: 320px;
-  border-radius: 12px;
+  aspect-ratio: 3/4;
+  width: 100%;
+  height: auto;
   object-fit: cover;
+  border-radius: 0.75rem;
 }
 
-.letter .copy-2024 {
-  width: 608px;
-  height: 396px;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.01em;
-  color: var(--color-text);
-}
-
-/* Reach out section */
+/* ==========================================================================
+   9. REACH OUT SECTION
+   ========================================================================== */
+/* Classes used:
+   - .reach-out (section container)
+   - .list (vertical list layout)
+*/
 .reach-out {
-  height: 792px;
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 2fr;
+  gap: 2rem;
+  align-items: start;
 }
 
-.reach-out h2 {
-  width: 240px;
-  height: 96px;
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 100%;
-  letter-spacing: -0.05em;
+@media (max-width: 768px) {
+  .reach-out {
+    grid-template-columns: 1fr;
+  }
 }
 
 .reach-out .list {
-  width: 608px;
-  height: 648px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
-.reach-out .list p {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
-  color: var(--color-text);
-}
-
-.reach-out .list hr {
-  width: 608px;
-  height: 1px;
-  background: color(display-p3 0.133 0.2 0.4 / 0.1);
-}
-
-/* Projects section */
-.projects {
-  height: 1128px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.projects h2 {
-  width: 880px;
-  height: 48px;
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 100%;
-  letter-spacing: -0.04em;
-}
-
+/* ==========================================================================
+   10. PROJECTS SECTION
+   ========================================================================== */
+/* Classes used:
+   - .projects (section container)
+   - .wrap (flex container for cards)
+   - .product-card (individual project card)
+   Components used:
+   - .badges
+   - .badge
+*/
 .projects .wrap {
-  width: 880px;
-  height: 1008px;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
-/* Contact section */
-.contact {
-  height: 616px;
-}
-
-.contact h2 {
-  width: 880px;
-  height: 48px;
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 100%;
-  letter-spacing: -0.04em;
-}
-
-.calendly-inline-widget {
-  width: 880px;
-  height: 400px;
-  background: color(display-p3 0.133 0.2 0.4 / 0.05);
-  border-radius: 12px;
-  margin-top: 24px;
-}
-
-/* Footer */
-footer {
-  height: 253px;
+.product-card {
+  flex: 1 1 400px;
+  min-height: 300px;
+  padding: 2rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: space-between;
+  background-position: center;
+  background-size: cover;
+}
+
+.product-card:last-child {
+  flex-basis: 100%;
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex-basis: 100%;
+  }
+}
+
+/* ==========================================================================
+   11. CONTACT SECTION
+   ========================================================================== */
+/* Classes used:
+   - .calendly-inline-widget (third-party widget container)
+*/
+.calendly-inline-widget {
+  width: 100%;
+  height: 150vh;
+  background: color(display-p3 0.133 0.2 0.4 / 0.05);
+  border-radius: 0.75rem;
+}
+
+/* ==========================================================================
+   12. FOOTER
+   ========================================================================== */
+/* Classes used:
+   - .stack (vertical stack layout, shared with letter section)
+*/
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 footer p {
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 0.01em;
+  font-size: 1.125rem;
+  line-height: 1.5;
   color: color(display-p3 0.133 0.2 0.4 / 0.6);
 }
