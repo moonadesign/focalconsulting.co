@@ -397,13 +397,14 @@ small {
 /* ==========================================================================
    12. FOOTER
    ========================================================================== */
-/* Classes used:
-   - .stack (vertical stack layout, shared with letter section)
-*/
 #footer {
+  padding: 4rem 0 6rem; /* Added bottom padding for breathing room */
+}
+
+#footer .stack {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem; /* Match the consistent gap we use elsewhere */
 }
 
 #footer p {
