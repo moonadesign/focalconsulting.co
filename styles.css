@@ -489,3 +489,29 @@ section {
   line-height: 1.5;
   color: var(--color-text-60);
 }
+
+/* ==========================================================================
+   12. CLIENTS SECTION
+   ========================================================================== */
+.logo-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-track {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 2.5rem;
+  opacity: 0.9;
+}
+
+.logo svg {
+  height: 100%;
+  width: auto;
+  fill: var(--color-text);
+}
