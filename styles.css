@@ -240,13 +240,6 @@ small {
   border-bottom: 1px solid var(--color-text-10);
 }
 
-#reach-out p:first-child {
-  border-bottom: none;
-  padding: 0 0 2rem 0;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
 /* ==========================================================================
    10. PROJECTS SECTION
    ========================================================================== */
@@ -281,10 +274,41 @@ small {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--color-text);
-  background-position: center;
   background-size: cover;
+  background-position: center;
   color: var(--color-white);
+  position: relative; /* For overlay positioning */
+  isolation: isolate; /* Create stacking context */
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(34, 51, 102, 0.9), rgba(34, 51, 102, 0));
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.airport-safety::before {
+  background: linear-gradient(to top, rgba(34, 51, 102, 0.9), rgba(34, 51, 102, 0.2));
+}
+
+/* Specific background images for each card */
+.ebike {
+  background-image: url('https://res.cloudinary.com/moona/image/upload/v1737501377/FocalConsulting/vander-films-iyMab-cmy3I-unsplash_pprfxf.jpg');
+}
+
+.charging {
+  background-image: url('https://res.cloudinary.com/moona/image/upload/v1737501195/FocalConsulting/Profile-100-Fluid-C-C-2K_xvmoma.png');
+}
+
+/* Ensure content stays above overlay */
+.product-card .badges,
+.product-card h3,
+.product-card p {
+  position: relative;
+  z-index: 1;
 }
 
 .product-card h3 {
@@ -292,6 +316,11 @@ small {
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
+}
+
+.product-card p {
+  font-size: 1.125rem;
+  opacity: 0.9;
 }
 
 .badges {
@@ -338,6 +367,23 @@ small {
   .product-card:nth-child(n) {
     grid-column: 1; /* Reset all cards to full width on mobile */
   }
+}
+
+/* Add to the projects section */
+.airport-safety {
+  background-image: url('https://res.cloudinary.com/moona/image/upload/v1737501192/FocalConsulting/OTW-AHL-1_jikmo5.jpg');
+}
+
+.soft-goods {
+  background-image: url('https://res.cloudinary.com/moona/image/upload/f_auto,q_auto/v1737501656/FocalConsulting/backpack-woods-trucker-cap_qg2mec');
+}
+
+.photo {
+  background-image: url('https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea');
+}
+
+.power-tool {
+  background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122');
 }
 
 /* ==========================================================================
